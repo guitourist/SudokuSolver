@@ -27,7 +27,7 @@ public class Board {
 
         //Find unfilled cell and fill it.
         for (int i = 1; i < 82; i++) {
-
+            
         }
 
         //Check value has/has not been used in row

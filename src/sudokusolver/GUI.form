@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="sudokusolver.GUI">
+  <grid id="27dc6" binding="OptionPanel" layout-manager="FormLayout">
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <colspec value="fill:d:grow"/>
+    <constraints>
+      <xy x="20" y="20" width="317" height="343"/>
+    </constraints>
+    <properties>
+      <background color="-8415837"/>
+      <maximumSize width="213" height="325"/>
+      <minimumSize width="213" height="325"/>
+      <preferredSize width="213" height="325"/>
+      <requestFocusEnabled value="false"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="46d62" binding="OptionTitlePanel" layout-manager="FormLayout">
+        <rowspec value="center:d:grow"/>
+        <colspec value="fill:d:grow"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms top="10" left="5" bottom="5" right="5"/>
+        </constraints>
+        <properties>
+          <background color="-10984591"/>
+          <preferredSize width="0" height="75"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="78cf7" class="javax.swing.JLabel" binding="OptionTitle">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false"/>
+            </constraints>
+            <properties>
+              <alignmentX value="0.5"/>
+              <font name="Mistral" size="48"/>
+              <text value="Sudoku Solver"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="f1e57" binding="OptionButtonPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="30" bottom="0" right="35"/>
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms top="0" left="25" bottom="0" right="25"/>
+        </constraints>
+        <properties>
+          <background color="-8945008"/>
+          <opaque value="true"/>
+          <preferredSize width="24" height="250"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="b026f" class="javax.swing.JButton" binding="OptionStartScratchButton">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-8945008"/>
+              <contentAreaFilled value="true"/>
+              <focusPainted value="true"/>
+              <font name="Century Gothic" size="20"/>
+              <iconTextGap value="0"/>
+              <margin top="5" left="0" bottom="5" right="0"/>
+              <opaque value="true"/>
+              <rolloverEnabled value="true"/>
+              <selected value="false"/>
+              <text value="Solver"/>
+              <visible value="true"/>
+            </properties>
+          </component>
+          <component id="88b2a" class="javax.swing.JButton" binding="randomBoardButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Century Gothic" size="20"/>
+              <text value="Random Board"/>
+            </properties>
+          </component>
+          <component id="8b422" class="javax.swing.JButton" binding="uploadBoardButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Century Gothic" size="20"/>
+              <text value="Upload Board"/>
+            </properties>
+          </component>
+          <component id="14c4b" class="javax.swing.JButton" binding="infoButton" default-binding="true">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font name="Century Gothic" size="20"/>
+              <text value="Info"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
