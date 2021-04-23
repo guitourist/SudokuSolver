@@ -19,6 +19,8 @@ public class MainApp extends JFrame {
                 try {
                     IntroGui frame = new IntroGui();
                     frame.setVisible(true);
+                    SolverGui sudoku = new SolverGui();
+                    sudoku.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

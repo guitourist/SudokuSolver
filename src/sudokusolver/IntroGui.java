@@ -13,6 +13,8 @@ import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.border.MatteBorder;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class IntroGui extends JFrame {
 
@@ -73,6 +75,10 @@ public class IntroGui extends JFrame {
 
     private void createSolverButton(JPanel buttonPanel) {
         JButton btnSolver = new JButton("Solver");
+        btnSolver.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            }
+        });
         btnSolver.setForeground(new Color(255, 255, 255));
         btnSolver.setBorderPainted(false);
         btnSolver.setBackground(new Color(105, 105, 105));
