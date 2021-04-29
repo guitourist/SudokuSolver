@@ -9,8 +9,17 @@ public class Solver
 	
 	public Solver(Board board)
 	{
-		grid = board.grid;
-		// need to make this immutable and return a copy in board class
+		grid = new int[9][9];
+		for (int i = 0; i < 9; i++)
+		{
+			for (int j = 0; j < 9; j++)
+				grid[i][j] = board.grid[i][j];
+		}
+	}
+	
+	public int[][] getGrid()
+	{
+		return grid;
 	}
 	
 	public void solveSudoku()
@@ -19,7 +28,7 @@ public class Solver
 		{
             for (int j = 0; j < 9; ++j)
             {
-                if (grid[i][j] != '0')
+                if (grid[i][j] != 0)
                 {
                     int x = grid[i][j];
                     col[j] = x;
@@ -41,12 +50,12 @@ public class Solver
         if (i == 9) {
             return true;
         }       
-        if (grid[i][j] != '.') {
+        if (grid[i][j] != 0) {
             return dfs(grid, i, j + 1);
         }
         for (int k = 1; k <= 9; ++k) {
             if (check(k, i, j)) {
-                grid[i][j] = (char)(48 + k);
+                grid[i][j] = k;
                 col[j] = k;
                 row[i] = k;
                 box[i/3][j/3] = k;
