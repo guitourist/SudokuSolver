@@ -1,9 +1,9 @@
 package sudokusolver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import edu.princeton.cs.algs4.Bag;
+import edu.princeton.cs.algs4.StdRandom;
+
+import java.util.*;
 
 public class Board {
     public int[][] grid = new int[9][9];
@@ -79,12 +79,12 @@ public class Board {
                                 if (isFull(grid))
                                     return true;
                                 else if (fillGrid(grid))
-                                    return true;
+                                    break;
                             }
                         }
                     }
                 }
-                break;
+                    break;
             }
         }
         return false;
@@ -107,5 +107,25 @@ public class Board {
         for(int i = 0; i < 9; i++) {
                 System.out.println(Arrays.toString(grid[i]));
         }
+    }
+
+    public int[][] getNewGrid(int[][] currentGrid) {
+        do {
+            fillGrid(currentGrid);
+        } while (!IsValid.isValidSudoku(currentGrid));
+        return currentGrid;
+    }
+
+    public int[][] removeNumbers(int[][] currentGrid) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < 5; i++) {
+            set.add(StdRandom.uniform(0, 81));
+        }
+        for (Integer i : set) {
+            int row = i / 9;
+            int col = i % 9;
+            currentGrid[row][col] = 0;
+        }
+        return currentGrid;
     }
 }

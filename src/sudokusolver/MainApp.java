@@ -29,16 +29,17 @@ public class MainApp extends JFrame {
 //            }
 //        });
         Board b = new Board();
-        
-        
-        b.fillGrid(b.grid);
-        b.printGrid(b.grid);
+        int[][] solved = b.getNewGrid(b.grid);
+        b.printGrid(solved);
+
         System.out.println();
-        
-        Solver s = new Solver(b);
-        s.solveSudoku();
-        b.printGrid(s.getGrid());
-        System.out.println("Is valid: " + IsValid.isValidSudoku(b.grid));
+
+        int[][] unsolved = b.removeNumbers(solved);
+        b.printGrid(unsolved);
+//        Solver s = new Solver(b);
+//        s.solveSudoku();
+//        b.printGrid(s.getGrid());
+//        System.out.println("Is valid: " + IsValid.isValidSudoku(b.grid));
 
     }
 
