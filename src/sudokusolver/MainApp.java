@@ -12,6 +12,10 @@ public class MainApp extends JFrame {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    private static final int EASY = 20;
+    private static final int MEDIUM = 35;
+    private static final int HARD = 50;
+
     /**
      * Launch the application.
      */
@@ -34,16 +38,8 @@ public class MainApp extends JFrame {
 
         System.out.println();
 
-        int[][] unsolved = b.removeNumbers(solved);
+        int[][] unsolved = b.removeNumbers(solved, EASY);
         b.printGrid(unsolved);
-//        Solver s = new Solver(b);
-//        s.solveSudoku();
-//        b.printGrid(s.getGrid());
-//        System.out.println("Is valid: " + IsValid.isValidSudoku(b.grid));
-
-    }
-
-    public MainApp() {
 
     }
 }

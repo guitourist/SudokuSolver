@@ -53,7 +53,7 @@ public class Solver
         if (grid[i][j] != 0) {
             return dfs(grid, i, j + 1);
         }
-        for (int k = 1; k <= 9; ++k) {
+        for (int k = 1; k <= 9; k++) {
             if (check(k, i, j)) {
                 grid[i][j] = k;
                 col[j] = k;

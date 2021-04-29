@@ -111,21 +111,32 @@ public class Board {
 
     public int[][] getNewGrid(int[][] currentGrid) {
         do {
+            currentGrid = createEmptyGrid();
             fillGrid(currentGrid);
         } while (!IsValid.isValidSudoku(currentGrid));
         return currentGrid;
     }
 
-    public int[][] removeNumbers(int[][] currentGrid) {
+    public int[][] removeNumbers(int[][] removeGrid, int difficulty) {
         Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < 5; i++) {
+        for (int r = 0; r < difficulty; r++) {
             set.add(StdRandom.uniform(0, 81));
         }
-        for (Integer i : set) {
-            int row = i / 9;
-            int col = i % 9;
-            currentGrid[row][col] = 0;
+        for (Integer ii : set) {
+            int row = ii / 9;
+            int col = ii % 9;
+            removeGrid[row][col] = 0;
         }
-        return currentGrid;
+        return removeGrid;
+    }
+
+    public int[][] createEmptyGrid() {
+        int[][] emptyGrid = new int[9][9];
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                emptyGrid[row][col] = 0;
+            }
+        }
+        return emptyGrid;
     }
 }
