@@ -77,6 +77,8 @@ public class IntroGui extends JFrame {
         JButton btnSolver = new JButton("Solver");
         btnSolver.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                SolverGui s = new SolverGui();
+                s.setVisible(true);
             }
         });
         btnSolver.setForeground(new Color(255, 255, 255));

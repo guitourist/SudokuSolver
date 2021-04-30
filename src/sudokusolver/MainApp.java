@@ -1,7 +1,8 @@
 package sudokusolver;
 
+import java.awt.*;
+import java.io.IOException;
 import java.io.Serial;
-import java.util.Arrays;
 import javax.swing.JFrame;
 
 public class MainApp extends JFrame {
@@ -19,19 +20,19 @@ public class MainApp extends JFrame {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 //        EventQueue.invokeLater(new Runnable() {
 //            public void run() {
 //                try {
 //                    IntroGui frame = new IntroGui();
 //                    frame.setVisible(true);
-//                    SolverGui sudoku = new SolverGui();
-//                    sudoku.setVisible(true);
 //                } catch (Exception e) {
 //                    e.printStackTrace();
 //                }
 //            }
 //        });
+
+        //Create a board
         Board b = new Board();
         int[][] solved = b.getNewGrid(b.grid);
         b.printGrid(solved);
@@ -40,6 +41,14 @@ public class MainApp extends JFrame {
 
         int[][] unsolved = b.removeNumbers(solved, EASY);
         b.printGrid(unsolved);
+
+        b.writeGridToFile(unsolved);
+
+        System.out.println();
+
+        Board c = new Board();
+        c.grid = unsolved;
+        c.printGrid(c.solveGrid(c.grid));
 
     }
 }

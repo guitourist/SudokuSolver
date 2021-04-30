@@ -1,12 +1,14 @@
 package sudokusolver;
 
-import edu.princeton.cs.algs4.Bag;
-import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class Board {
     public int[][] grid = new int[9][9];
+    public Graph graph;
 
     public Board() {
         for (int row = 0; row < 9; row++) {
@@ -117,6 +119,15 @@ public class Board {
         return currentGrid;
     }
 
+    public int[][] solveGrid(int[][] toBeSolved) {
+        for (int i = 0; i < 100; i++) {
+            fillGrid(toBeSolved);
+            if (IsValid.isValidSudoku(toBeSolved))
+                return toBeSolved;
+        }
+        return createEmptyGrid();
+    }
+
     public int[][] removeNumbers(int[][] removeGrid, int difficulty) {
         Set<Integer> set = new HashSet<>();
         for (int r = 0; r < difficulty; r++) {
@@ -138,5 +149,24 @@ public class Board {
             }
         }
         return emptyGrid;
+    }
+
+    public void writeGridToFile(int[][] writtenGrid) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    sb.append(count).append(",").append(writtenGrid[i][j]).append("\n");
+                    count++;
+                }
+            }
+        try {
+            FileWriter fw = new FileWriter("grid.txt");
+            fw.write(sb.toString());
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 }
