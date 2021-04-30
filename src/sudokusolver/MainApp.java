@@ -13,25 +13,27 @@ public class MainApp extends JFrame {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private static final int EASY = 20;
-    private static final int MEDIUM = 35;
-    private static final int HARD = 50;
+    static final int EASY = 20;
+    static final int MEDIUM = 35;
+    static final int HARD = 50;
 
     /**
      * Launch the application.
      */
     public static void main(String[] args) throws IOException {
-//        EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                try {
-//                    IntroGui frame = new IntroGui();
-//                    frame.setVisible(true);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
+    	
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    IntroGui frame = new IntroGui();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+    	/*
         //Create a board
         Board b = new Board();
         int[][] solved = b.getNewGrid(b.grid);
@@ -49,6 +51,6 @@ public class MainApp extends JFrame {
         Board c = new Board();
         c.grid = unsolved;
         c.printGrid(c.solveGrid(c.grid));
-
+		*/
     }
 }
