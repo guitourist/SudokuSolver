@@ -37,9 +37,9 @@ public class IntroGui extends JFrame {
         JPanel TitlePanel = createTitlePanel();
         createTitleLabel(TitlePanel);
         JPanel buttonPanel = createButtonPanel();
-        createSolverButton(buttonPanel);
-        createRandBoardButton(buttonPanel);
-        createUploadButton(buttonPanel);
+        createEasyButton(buttonPanel);
+        createMediumButton(buttonPanel);
+        createHardButton(buttonPanel);
         createInfoButton(buttonPanel);
     }
 
@@ -53,40 +53,55 @@ public class IntroGui extends JFrame {
         buttonPanel.add(btnInfo);
     }
 
-    private void createUploadButton(JPanel buttonPanel) {
-        JButton btnUploadBoard = new JButton("Upload Board");
-        btnUploadBoard.setForeground(Color.WHITE);
-        btnUploadBoard.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
-        btnUploadBoard.setBorderPainted(false);
-        btnUploadBoard.setBackground(SystemColor.controlDkShadow);
-        btnUploadBoard.setBounds(33, 163, 271, 48);
-        buttonPanel.add(btnUploadBoard);
-    }
-
-    private void createRandBoardButton(JPanel buttonPanel) {
-        JButton btnRandomBoard = new JButton("Random Board");
-        btnRandomBoard.setForeground(Color.WHITE);
-        btnRandomBoard.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
-        btnRandomBoard.setBorderPainted(false);
-        btnRandomBoard.setBackground(SystemColor.controlDkShadow);
-        btnRandomBoard.setBounds(33, 99, 271, 48);
-        buttonPanel.add(btnRandomBoard);
-    }
-
-    private void createSolverButton(JPanel buttonPanel) {
-        JButton btnSolver = new JButton("Solver");
-        btnSolver.addActionListener(new ActionListener() {
+    private void createHardButton(JPanel buttonPanel) {
+        JButton btnHard = new JButton("Hard");
+        btnHard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SolverGui s = new SolverGui();
+                s.setDifficulty(22);
                 s.setVisible(true);
             }
         });
-        btnSolver.setForeground(new Color(255, 255, 255));
-        btnSolver.setBorderPainted(false);
-        btnSolver.setBackground(new Color(105, 105, 105));
-        btnSolver.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
-        btnSolver.setBounds(33, 34, 271, 48);
-        buttonPanel.add(btnSolver);
+        btnHard.setForeground(Color.WHITE);
+        btnHard.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
+        btnHard.setBorderPainted(false);
+        btnHard.setBackground(SystemColor.controlDkShadow);
+        btnHard.setBounds(33, 163, 271, 48);
+        buttonPanel.add(btnHard);
+    }
+
+    private void createMediumButton(JPanel buttonPanel) {
+        JButton btnMedium = new JButton("Medium");
+        btnMedium.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SolverGui s = new SolverGui();
+                s.setDifficulty(16);
+                s.setVisible(true);
+            }
+        });
+        btnMedium.setForeground(Color.WHITE);
+        btnMedium.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
+        btnMedium.setBorderPainted(false);
+        btnMedium.setBackground(SystemColor.controlDkShadow);
+        btnMedium.setBounds(33, 99, 271, 48);
+        buttonPanel.add(btnMedium);
+    }
+
+    private void createEasyButton(JPanel buttonPanel) {
+        JButton btnEasy = new JButton("Easy");
+        btnEasy.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SolverGui s = new SolverGui();
+                s.setDifficulty(10);
+                s.setVisible(true);
+            }
+        });
+        btnEasy.setForeground(new Color(255, 255, 255));
+        btnEasy.setBorderPainted(false);
+        btnEasy.setBackground(new Color(105, 105, 105));
+        btnEasy.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
+        btnEasy.setBounds(33, 34, 271, 48);
+        buttonPanel.add(btnEasy);
     }
 
     private JPanel createButtonPanel() {

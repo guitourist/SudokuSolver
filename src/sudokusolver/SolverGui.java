@@ -26,6 +26,8 @@ public class SolverGui extends JFrame {
 	private JPanel panelSolved;
 	private int[][] completed;
 	private JPanel solvedBoardPanel;
+	public int difficulty = 10;
+	public JButton btnSolvedPuzzle;
 
     /**
      * Create the frame.
@@ -69,7 +71,7 @@ public class SolverGui extends JFrame {
         SudokuBoardPanel.add(solvedBoardPanel, BorderLayout.EAST);
         solvedBoardPanel.setLayout(new BorderLayout(0, 0));
         
-        JButton btnSolvedPuzzle = new JButton("Solved Puzzle");
+        btnSolvedPuzzle = new JButton("Solved Puzzle");
         btnSolvedPuzzle.setHorizontalAlignment(SwingConstants.CENTER);
         solvedBoardPanel.add(btnSolvedPuzzle, BorderLayout.SOUTH);
         
@@ -84,7 +86,10 @@ public class SolverGui extends JFrame {
                 solvedBoardPanel.add(panelSolved, BorderLayout.CENTER);
                 completed = c.solveGrid(c.grid);
         		displaySudokuBoard(panelSolved, completed);
-        		
+
+                if (c.isEmpty(completed))
+                    setSolverButtonText("Could Not Solve Puzzle");
+
         		panelSolved.setVisible(true);
         		panelSolved.revalidate();
         		panelSolved.repaint();
@@ -122,7 +127,7 @@ public class SolverGui extends JFrame {
         		b = new Board();
                 solved = b.getNewGrid(b.grid);
 
-                unsolved = b.removeNumbers(solved, MainApp.EASY);
+                unsolved = b.removeNumbers(solved, difficulty);
 
                 c = new Board();
                 c.grid = unsolved;
@@ -130,8 +135,10 @@ public class SolverGui extends JFrame {
                 JPanel panelInitial = new JPanel();
                 InitialBoardPanel.add(panelInitial, BorderLayout.CENTER);
         		displaySudokuBoard(panelInitial, unsolved);
-        		
-                
+
+        		if (btnSolvedPuzzle.isEnabled())
+        		    setSolverButtonText("Solve");
+
                 panelInitial.revalidate();
                 panelInitial.repaint();
                 
@@ -214,5 +221,13 @@ public class SolverGui extends JFrame {
         MainPanel.add(MainBackground, BorderLayout.CENTER);
         MainBackground.setLayout(new BorderLayout(0, 0));
         return MainBackground;
+    }
+
+    public void setDifficulty(int dif) {
+        difficulty = dif;
+    }
+
+    public void setSolverButtonText(String s) {
+        btnSolvedPuzzle.setText(s);
     }
 }

@@ -27,6 +27,15 @@ public class Board {
         return true;
     }
 
+    public boolean isEmpty(int[][] grid) {
+        for (int row = 0; row < 9; row++){
+            for (int col = 0; col < 9; col++) {
+                if (grid[row][col] != 0) return false;
+            }
+        }
+        return true;
+    }
+
     public boolean fillGrid(int[][] grid) {
         Integer[] intArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -120,7 +129,7 @@ public class Board {
     }
 
     public int[][] solveGrid(int[][] toBeSolved) {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 100000; i++) {
             fillGrid(toBeSolved);
             if (IsValid.isValidSudoku(toBeSolved))
                 return toBeSolved;
@@ -136,7 +145,13 @@ public class Board {
         for (Integer ii : set) {
             int row = ii / 9;
             int col = ii % 9;
-            removeGrid[row][col] = 0;
+            if (row + col == 8)
+                removeGrid[row][col] = 0;
+            else {
+                removeGrid[row][col] = 0;
+                removeGrid[8 - col][8 - row] = 0;
+            }
+
         }
         return removeGrid;
     }

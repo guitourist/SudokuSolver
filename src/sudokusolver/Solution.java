@@ -1,11 +1,7 @@
 package sudokusolver;
 
-import edu.princeton.cs.algs4.DepthFirstSearch;
 import edu.princeton.cs.algs4.SymbolGraph;
-
 import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class Solution
 {
@@ -34,51 +30,10 @@ public class Solution
     }
 
 
-
-//	private boolean dfs(int[][] dfsgrid, int r, int c)
-//	{
-//		if (c == 9) {
-//            r++;
-//            c = 0;
-//        }
-//        if (r == 9) {
-//            return true;
-//        }
-//        if (dfsgrid[r][c] != 0) {
-//            return dfs(dfsgrid, r, c + 1);
-//        }
-//        for (int i = 1; i <= 9; ++i) {
-//            if (check(i, r, c)) {
-//                dfsgrid[r][c] = i;
-//                col[c] = i;
-//                row[r] = i;
-//                box[r/3][c/3] = i;
-//                if (dfs(dfsgrid, r, c + 1)) {
-//                    return true;
-//                }
-//                dfsgrid[r][c] = 0;
-//                col[c] = 0;
-//                row[r] = 0;
-//                box[r/3][c/3] = 0;
-//            }
-//        }
-//        return false;
-//	}
-
     public int[][] getGrid()
     {
         return grid;
     }
-
-//    public void solveSudokuWithGraph(String filename, Point p) {
-//	    SymbolGraph sg = createGraph(filename);
-//        DepthFirstSearch dfs = new DepthFirstSearch(sg.graph(), grid[p.x][p.y]);
-//        for (Integer i : sg.graph().adj(grid[p.x][p.y])) {
-//            if (sg.nameOf(i))
-//
-//
-//        }
-//    }
 
     public void printGraph(SymbolGraph sg) {
 	    for (Integer i : sg.graph().adj(0)) {
