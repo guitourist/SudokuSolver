@@ -9,6 +9,7 @@ import java.util.*;
 public class Board {
     public int[][] grid = new int[9][9];
     public Graph graph;
+    private int solveability = 0;
 
     public Board() {
         for (int row = 0; row < 9; row++) {
@@ -131,8 +132,11 @@ public class Board {
     public int[][] solveGrid(int[][] toBeSolved) {
         for (int i = 0; i < 100000; i++) {
             fillGrid(toBeSolved);
-            if (IsValid.isValidSudoku(toBeSolved))
+            if (IsValid.isValidSudoku(toBeSolved)) {
+                solveability = i;
                 return toBeSolved;
+            }
+
         }
         return createEmptyGrid();
     }
@@ -183,5 +187,9 @@ public class Board {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public int getSolveability() {
+        return solveability;
     }
 }

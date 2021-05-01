@@ -89,6 +89,9 @@ public class SolverGui extends JFrame {
 
                 if (c.isEmpty(completed))
                     setSolverButtonText("Could Not Solve Puzzle");
+                else {
+
+                }
 
         		panelSolved.setVisible(true);
         		panelSolved.revalidate();
