@@ -20,6 +20,8 @@ public class IntroGui extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel MainPanel;
+    private SolvablePuzzles solvedPuzzles;
+
 
     /**
      * Create the frame.
@@ -44,13 +46,25 @@ public class IntroGui extends JFrame {
     }
 
     private void createInfoButton(JPanel buttonPanel) {
-        JButton btnInfo = new JButton("Info");
-        btnInfo.setForeground(Color.WHITE);
-        btnInfo.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
-        btnInfo.setBorderPainted(false);
-        btnInfo.setBackground(SystemColor.controlDkShadow);
-        btnInfo.setBounds(33, 227, 271, 48);
-        buttonPanel.add(btnInfo);
+        JButton btnRecent = new JButton("Last Solved Puzzle");
+        btnRecent.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SolverGui s = new SolverGui();
+                if (MainApp.s.isEmpty()) {
+                    s.setSolverButtonText("No Solved Puzzles.");
+                } else
+                    s.displaySolvedBoard(MainApp.s.getSolveablePuzzleBoard());
+                s.btnSolvedPuzzle.setEnabled(false);
+                s.btnNewPuzzle.setEnabled(false);
+                s.setVisible(true);
+            }
+        });
+        btnRecent.setForeground(Color.WHITE);
+        btnRecent.setFont(new Font("Segoe UI Light", Font.PLAIN, 29));
+        btnRecent.setBorderPainted(false);
+        btnRecent.setBackground(SystemColor.controlDkShadow);
+        btnRecent.setBounds(33, 227, 271, 48);
+        buttonPanel.add(btnRecent);
     }
 
     private void createHardButton(JPanel buttonPanel) {
@@ -129,5 +143,9 @@ public class IntroGui extends JFrame {
         MainPanel.add(TitlePanel, BorderLayout.NORTH);
         TitlePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 17));
         return TitlePanel;
+    }
+
+    public void addSolvedPuzzle(Board b){
+        solvedPuzzles.addSolveablePuzzle(b);
     }
 }

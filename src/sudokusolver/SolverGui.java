@@ -28,12 +28,13 @@ public class SolverGui extends JFrame {
 	private JPanel solvedBoardPanel;
 	public int difficulty = 10;
 	public JButton btnSolvedPuzzle;
+	public JButton btnNewPuzzle;
 
     /**
      * Create the frame.
      */
     public SolverGui() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setBounds(100, 100, 746, 516);
         MainPanel = new JPanel();
         MainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,10 +50,6 @@ public class SolverGui extends JFrame {
         createInitialBoardLabel(InitialBoardPanel);
         JPanel SolvedBoardPanel = createSolvedBoardPanel(SudokuBoardPanel);
         createSolvedBoardLabel(SolvedBoardPanel);
-
-        //To Print Solved Board
-        
-
     }
 
     private void createSolvedBoardLabel(JPanel SolvedBoardPanel) {
@@ -89,10 +86,9 @@ public class SolverGui extends JFrame {
 
                 if (c.isEmpty(completed))
                     setSolverButtonText("Could Not Solve Puzzle");
-                else {
-
+                else if (IsValid.isValidSudoku(completed)){
+                    MainApp.s.addSolveablePuzzle(c);
                 }
-
         		panelSolved.setVisible(true);
         		panelSolved.revalidate();
         		panelSolved.repaint();
@@ -117,7 +113,7 @@ public class SolverGui extends JFrame {
         InitialBoardPanel.setLayout(new BorderLayout(0, 0));
         SudokuBoardPanel.add(InitialBoardPanel, BorderLayout.WEST);
         
-        JButton btnNewPuzzle = new JButton("New Puzzle");
+        btnNewPuzzle = new JButton("New Puzzle");
         InitialBoardPanel.add(btnNewPuzzle, BorderLayout.SOUTH);
         
         JPanel panelInitial = new JPanel();
@@ -160,15 +156,11 @@ public class SolverGui extends JFrame {
     private int[][] nineByNineArrayOfZeros()
     {
     	int[][] output = new int[9][9];
-    	
-    	for (int i = 0; i < 9; i++)
-    	{
-    		for (int j = 0; j < 9; j++)
-    		{
+    	for (int i = 0; i < 9; i++) {
+    		for (int j = 0; j < 9; j++) {
     			output[i][j] = 0;
     		}
     	}
-    	
     	return output;
     }
 
@@ -191,6 +183,26 @@ public class SolverGui extends JFrame {
 			}
 		}
 	}
+
+	public void displaySolvedBoard(Board board) {
+        Board b = board;
+        panelSolved.removeAll();
+        btnSolvedPuzzle.setEnabled(true);
+        btnSolvedPuzzle.setText("Last Solved Puzzle");
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                JLabel lbl;
+                if (b.grid[i][j] == 0)
+                    lbl = new JLabel("");
+                else
+                    lbl = new JLabel("" + b.grid[i][j]);
+                lbl.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+                lbl.setHorizontalAlignment(SwingConstants.CENTER);
+                panelSolved.add(lbl);
+            }
+        }
+    }
 
     private JPanel createSudokuBoardPanel(JPanel MainBackground) {
         JPanel SudokuBoardPanel = new JPanel();
@@ -233,4 +245,7 @@ public class SolverGui extends JFrame {
     public void setSolverButtonText(String s) {
         btnSolvedPuzzle.setText(s);
     }
+
+
+
 }

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 public class MainApp extends JFrame {
 
+    public static SolvablePuzzles s;
     /**
      *
      */
@@ -23,6 +24,7 @@ public class MainApp extends JFrame {
                 try {
                     IntroGui frame = new IntroGui();
                     frame.setVisible(true);
+                    s = new SolvablePuzzles();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

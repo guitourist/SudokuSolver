@@ -1,5 +1,7 @@
 package sudokusolver;
 
+import edu.princeton.cs.algs4.Graph;
+
 import java.io.*;
 import java.util.*;
  
@@ -149,5 +151,17 @@ public class IsValid {
  
 		// If all conditions satisfied
 		return true;
+	}
+
+	public boolean testWithGraph(Graph graph) {
+		//Read in graph
+		//Create set of 1 - 9
+		//Create set from connected row chars
+		//Create set from connected color string
+		//Create set from connected column ints
+
+		//Compare all sets and if all are the same, return true
+
+		return false;
 	}
 }

@@ -192,4 +192,14 @@ public class Board {
     public int getSolveability() {
         return solveability;
     }
+
+    public String uniqueBoardID(int[][] grid) {
+        StringBuilder sb = new StringBuilder();
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                sb.append(grid[row][col]);
+            }
+        }
+        return sb.toString();
+    }
 }
