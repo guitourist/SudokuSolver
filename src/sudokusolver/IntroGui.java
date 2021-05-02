@@ -16,6 +16,13 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Generates the introductory page gui for the application where the user
+ * begins.
+ * 
+ * @author Adrien Baldwin & Marshall Ringwood
+ *
+ */
 public class IntroGui extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -24,7 +31,7 @@ public class IntroGui extends JFrame {
 
 
     /**
-     * Create the frame.
+     * Creates the frame.
      */
     public IntroGui() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -145,6 +152,11 @@ public class IntroGui extends JFrame {
         return TitlePanel;
     }
 
+    /**
+     * Adds the solved puzzle.
+     * 
+     * @param b
+     */
     public void addSolvedPuzzle(Board b){
         solvedPuzzles.addSolveablePuzzle(b);
     }

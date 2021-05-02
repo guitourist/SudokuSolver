@@ -1,16 +1,25 @@
 package sudokusolver;
 
 import edu.princeton.cs.algs4.*;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Represents a Sudoku board with a corresponding grid to be solved 
+ * using depth first search.
+ * 
+ * @author Adrien Baldwin & Marshall Ringwood
+ *
+ */
 public class Board {
     public int[][] grid = new int[9][9];
     public Graph graph;
     private int solveability = 0;
 
+    /**
+     * Constructor of class Board.
+     */
     public Board() {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
@@ -19,6 +28,12 @@ public class Board {
         }
     }
 
+    /**
+     * Returns a boolean for whether the grid is full or not.
+     * 
+     * @param grid
+     * @return boolean
+     */
     public boolean isFull(int[][] grid) {
         for (int row = 0; row < 9; row++){
             for (int col = 0; col < 9; col++) {
@@ -28,6 +43,12 @@ public class Board {
         return true;
     }
 
+    /**
+     * Returns a boolean for whether or not the grid is empty.
+     * 
+     * @param grid
+     * @return boolean
+     */
     public boolean isEmpty(int[][] grid) {
         for (int row = 0; row < 9; row++){
             for (int col = 0; col < 9; col++) {
@@ -37,6 +58,14 @@ public class Board {
         return true;
     }
 
+    /**
+     * Recursive algorithm to provide a solved Sudoku board using
+     * a depth first search approach. The boolean return is used
+     * for the recursion.
+     * 
+     * @param grid
+     * @return boolean
+     */
     public boolean fillGrid(int[][] grid) {
         Integer[] intArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -53,10 +82,14 @@ public class Board {
                 for (int j = 0; j < numbers.length; j++) {
 
                     //Test Row to see if it contains the value
-                    if (!Arrays.asList(grid[row][0], grid[row][1], grid[row][2], grid[row][3], grid[row][4], grid[row][5], grid[row][6], grid[row][7], grid[row][8]).contains(numbers[j])) {
+                    if (!Arrays.asList(grid[row][0], grid[row][1], grid[row][2], 
+                    		grid[row][3], grid[row][4], grid[row][5], grid[row][6], 
+                    		grid[row][7], grid[row][8]).contains(numbers[j])) {
 
                         //Test Column to see if it contains the value
-                        if (!Arrays.asList(grid[0][col],grid[1][col],grid[2][col],grid[3][col],grid[4][col],grid[5][col],grid[6][col],grid[7][col],grid[8][col]).contains(numbers[j])) {
+                        if (!Arrays.asList(grid[0][col],grid[1][col],grid[2][col],
+                        		grid[3][col],grid[4][col],grid[5][col],grid[6][col],
+                        		grid[7][col],grid[8][col]).contains(numbers[j])) {
 
                             //Test squares to see if they contain value
                             int[] testsquare;
@@ -115,12 +148,23 @@ public class Board {
         return square;
     }
 
+    /**
+     * Prints the grid.
+     * 
+     * @param grid
+     */
     public void printGrid(int[][] grid) {
         for(int i = 0; i < 9; i++) {
                 System.out.println(Arrays.toString(grid[i]));
         }
     }
 
+    /**
+     * Returns a new grid.
+     * 
+     * @param currentGrid
+     * @return new grid
+     */
     public int[][] getNewGrid(int[][] currentGrid) {
         do {
             currentGrid = createEmptyGrid();
@@ -129,6 +173,12 @@ public class Board {
         return currentGrid;
     }
 
+    /**
+     * Returns a solved grid.
+     * 
+     * @param toBeSolved
+     * @return solved grid
+     */
     public int[][] solveGrid(int[][] toBeSolved) {
         for (int i = 0; i < 100000; i++) {
             fillGrid(toBeSolved);
@@ -141,6 +191,14 @@ public class Board {
         return createEmptyGrid();
     }
 
+    /**
+     * Returns a grid where numbers have been replaced with 0's in order
+     * to represent an unsolved sudoku puzzle.
+     * 
+     * @param removeGrid
+     * @param difficulty
+     * @return grid
+     */
     public int[][] removeNumbers(int[][] removeGrid, int difficulty) {
         Set<Integer> set = new HashSet<>();
         for (int r = 0; r < difficulty; r++) {
@@ -160,6 +218,11 @@ public class Board {
         return removeGrid;
     }
 
+    /**
+     * Creates an empty grid (filled with zeroes).
+     * 
+     * @return empty grid
+     */
     public int[][] createEmptyGrid() {
         int[][] emptyGrid = new int[9][9];
         for (int row = 0; row < 9; row++) {
@@ -170,6 +233,12 @@ public class Board {
         return emptyGrid;
     }
 
+    /**
+     * Writes the grid to a file.
+     * 
+     * @param writtenGrid
+     * @throws IOException
+     */
     public void writeGridToFile(int[][] writtenGrid) throws IOException {
         StringBuilder sb = new StringBuilder();
         int count = 0;
@@ -189,10 +258,21 @@ public class Board {
         }
     }
 
+    /**
+     * Returns the solveability.
+     * 
+     * @return solveability
+     */
     public int getSolveability() {
         return solveability;
     }
 
+    /**
+     * Returns a unique board identification string.
+     * 
+     * @param grid
+     * @return unique string
+     */
     public String uniqueBoardID(int[][] grid) {
         StringBuilder sb = new StringBuilder();
         for (int row = 0; row < 9; row++) {

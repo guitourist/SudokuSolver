@@ -5,17 +5,20 @@ import java.io.IOException;
 import java.io.Serial;
 import javax.swing.JFrame;
 
+/**
+ * Main application to implement Sudoku Solver.
+ * 
+ * @author Adrien Baldwin & Marshall Ringwood
+ *
+ */
 public class MainApp extends JFrame {
-
     public static SolvablePuzzles s;
-    /**
-     *
-     */
+    
     @Serial
     private static final long serialVersionUID = 1L;
 
     /**
-     * Launch the application.
+     * Launches the application.
      */
     public static void main(String[] args) throws IOException {
     	

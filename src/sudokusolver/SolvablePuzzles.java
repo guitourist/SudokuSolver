@@ -3,6 +3,13 @@ package sudokusolver;
 import edu.princeton.cs.algs4.ST;
 import edu.princeton.cs.algs4.Stack;
 
+/**
+ * Manages a symbol table and stack that provide functionality to be able to
+ * recall previous randomly generated puzzles.
+ * 
+ * @author Adrien Baldwin & Marshall Ringwood
+ *
+ */
 public class SolvablePuzzles {
     ST<Double, Board> canSolve = new ST<>();
     Stack<Double> keys = new Stack<>();

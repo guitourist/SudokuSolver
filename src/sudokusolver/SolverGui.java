@@ -15,8 +15,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Creates the main gui of the application where the sudoku puzzles are displayed.
+ * 
+ * @author Adrien Baldwin & Marshall Ringwood
+ *
+ */
 public class SolverGui extends JFrame {
-
     private JPanel MainPanel;
     private static final long serialVersionUID = 2L;
 	private int[][] solved;
@@ -31,7 +36,7 @@ public class SolverGui extends JFrame {
 	public JButton btnNewPuzzle;
 
     /**
-     * Create the frame.
+     * Creates the frame.
      */
     public SolverGui() {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -77,7 +82,6 @@ public class SolverGui extends JFrame {
         displaySudokuBoard(panelSolved, nineByNineArrayOfZeros());
         
         btnSolvedPuzzle.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
                 panelSolved = new JPanel();
                 solvedBoardPanel.add(panelSolved, BorderLayout.CENTER);
@@ -148,13 +152,10 @@ public class SolverGui extends JFrame {
         	}
         });
         
-        
-
         return InitialBoardPanel;
     }
     
-    private int[][] nineByNineArrayOfZeros()
-    {
+    private int[][] nineByNineArrayOfZeros() {
     	int[][] output = new int[9][9];
     	for (int i = 0; i < 9; i++) {
     		for (int j = 0; j < 9; j++) {
@@ -164,14 +165,11 @@ public class SolverGui extends JFrame {
     	return output;
     }
 
-	private void displaySudokuBoard(JPanel panel, int[][] grid)
-	{
+	private void displaySudokuBoard(JPanel panel, int[][] grid) {
 		panel.setLayout(new GridLayout(0, 9, 0, 0));
 		
-		for (int i = 0; i < 9; i++)
-		{
-			for (int j = 0; j < 9; j++)
-			{
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
 				JLabel lbl;
 				if (grid[i][j] == 0)
 					lbl = new JLabel("");
@@ -184,6 +182,11 @@ public class SolverGui extends JFrame {
 		}
 	}
 
+	/**
+	 * Displays the solved board.
+	 * 
+	 * @param board
+	 */
 	public void displaySolvedBoard(Board board) {
         Board b = board;
         panelSolved.removeAll();
@@ -238,14 +241,21 @@ public class SolverGui extends JFrame {
         return MainBackground;
     }
 
+    /**
+     * Sets the difficulty dependent on an integer input.
+     * 
+     * @param dif
+     */
     public void setDifficulty(int dif) {
         difficulty = dif;
     }
 
+    /**
+     * Sets the text of the solver button.
+     * 
+     * @param s
+     */
     public void setSolverButtonText(String s) {
         btnSolvedPuzzle.setText(s);
     }
-
-
-
 }
